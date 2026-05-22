@@ -566,11 +566,14 @@ function DisciplineGuide() {
 }
 
 // ── Section header helper ─────────────────────────────────────────────────────
-function SH({ eyebrow, title, body, eyeColor = A.coral }: { eyebrow: string; title: string; body?: string; eyeColor?: string }) {
+function SH({ eyebrow, title, body, eyeColor = A.coral, chapter }: { eyebrow: string; title: string; body?: string; eyeColor?: string; chapter?: string }) {
   return (
     <div style={{ marginBottom: 48 }}>
-      <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: eyeColor, fontWeight: 700, marginBottom: 14 }}>{eyebrow}</div>
-      <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 700, color: A.text, letterSpacing: '-0.025em', lineHeight: 1.1, marginBottom: body ? 20 : 0 }}>{title}</h2>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 14 }}>
+        {chapter && <span style={{ fontSize: 10, fontWeight: 700, color: A.text4, fontFamily: 'var(--font-geist-mono)', letterSpacing: 3 }}>{chapter}</span>}
+        <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: eyeColor, fontWeight: 700 }}>{eyebrow}</div>
+      </div>
+      <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 400, color: A.text, letterSpacing: '-0.01em', lineHeight: 1.08, marginBottom: body ? 20 : 0, fontFamily: 'var(--font-abril), Georgia, serif' }}>{title}</h2>
       {body && <p style={{ fontSize: 17, color: A.text3, maxWidth: 580, lineHeight: 1.65, fontWeight: 400 }}>{body}</p>}
     </div>
   );
@@ -619,29 +622,29 @@ export default function Page() {
         {/* radial glow */}
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,107,53,0.06) 0%, transparent 70%)' }} />
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 200, background: `linear-gradient(transparent, ${A.bg})` }} />
-        <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '0 24px', maxWidth: 860, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
+        <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '0 24px', maxWidth: 860, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '6px 16px', borderRadius: 980, border: `1px solid ${A.border}`, background: 'rgba(255,255,255,0.04)' }}>
             <div style={{ width: 6, height: 6, borderRadius: '50%', background: A.green }} />
             <span style={{ fontSize: 12, color: A.text3, letterSpacing: 0.5 }}>A Claude-Powered Developer Platform</span>
           </div>
-          <h1 style={{ fontSize: 'clamp(2.8rem, 7vw, 5.5rem)', fontWeight: 700, color: A.text, lineHeight: 1.05, letterSpacing: '-0.035em', margin: 0 }}>
-            Brilliant Models<br />
-            <span style={{ background: `linear-gradient(135deg, ${A.coral} 0%, ${A.purple} 60%, ${A.cyan} 100%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Start Here</span>
+          <h1 style={{ fontSize: 'clamp(3rem, 8vw, 6.5rem)', fontWeight: 400, color: A.text, lineHeight: 1.0, letterSpacing: '-0.01em', margin: 0, fontFamily: 'var(--font-abril), Georgia, serif' }}>
+            Build the mind.<br />
+            <span style={{ background: `linear-gradient(135deg, ${A.coral} 0%, ${A.purple} 60%, ${A.cyan} 100%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Tell its story.</span>
           </h1>
-          <p style={{ fontSize: 19, color: A.text3, lineHeight: 1.65, maxWidth: 620, fontWeight: 400, margin: 0 }}>
+          <p style={{ fontSize: 19, color: A.text3, lineHeight: 1.65, maxWidth: 600, fontWeight: 400, margin: 0 }}>
             Fault-tolerant distributed training for trillion-parameter models.
             Cinematic AI video generation from structured prompts.
-            Two Higgsfield products — shaped by Claude's intelligence,
-            built for the builders advancing AI.
+            Two acts of the same creative journey — shaped by Claude,
+            built for builders who think in chapters.
           </p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
-            <a href="#framework" style={{ padding: '13px 28px', borderRadius: 980, background: A.coral, color: '#fff', fontSize: 15, fontWeight: 600, letterSpacing: '-0.01em' }}>Explore the Framework</a>
-            <a href="#prompt" style={{ padding: '13px 28px', borderRadius: 980, border: `1px solid ${A.borderStrg}`, background: 'rgba(255,255,255,0.05)', color: A.text, fontSize: 15, fontWeight: 600 }}>Open Prompt Studio</a>
+            <a href="#framework" style={{ padding: '13px 28px', borderRadius: 980, background: A.coral, color: '#fff', fontSize: 15, fontWeight: 600, letterSpacing: '-0.01em' }}>Begin the journey</a>
+            <a href="#prompt" style={{ padding: '13px 28px', borderRadius: 980, border: `1px solid ${A.borderStrg}`, background: 'rgba(255,255,255,0.05)', color: A.text, fontSize: 15, fontWeight: 600 }}>Enter the Studio</a>
           </div>
         </div>
         {/* scroll hint */}
         <div style={{ position: 'absolute', bottom: 40, zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-          <div style={{ fontSize: 11, color: A.text4, letterSpacing: 2, textTransform: 'uppercase' }}>Scroll to explore</div>
+          <div style={{ fontSize: 11, color: A.text4, letterSpacing: 2, textTransform: 'uppercase' }}>Your story begins below</div>
           <div style={{ width: 1, height: 32, background: `linear-gradient(${A.text4}, transparent)` }} />
         </div>
       </section>
@@ -650,8 +653,9 @@ export default function Page() {
       <section style={{ padding: '100px 0', borderTop: `1px solid ${A.border}` }}>
         <div style={{ maxWidth: 980, margin: '0 auto', padding: '0 32px' }}>
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
-            <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: A.text4, marginBottom: 14 }}>The Platform</div>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 700, color: A.text, letterSpacing: '-0.025em', lineHeight: 1.1 }}>Two products. One ecosystem.</h2>
+            <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: A.text4, marginBottom: 14 }}>The Narrative Arc</div>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 400, color: A.text, letterSpacing: '-0.01em', lineHeight: 1.08, fontFamily: 'var(--font-abril), Georgia, serif' }}>Act I, then Act II.</h2>
+            <p style={{ fontSize: 16, color: A.text3, maxWidth: 480, margin: '16px auto 0', lineHeight: 1.65 }}>Train the intelligence. Then direct what it creates. Two products, one through-line.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
             {[
@@ -686,7 +690,7 @@ export default function Page() {
       {/* ── GPU Framework ── */}
       <section id="framework" style={{ padding: '100px 0', borderTop: `1px solid ${A.border}` }}>
         <div style={{ maxWidth: 980, margin: '0 auto', padding: '0 32px' }}>
-          <SH eyebrow="GPU Orchestration" title="Train at Any Scale" body="Higgsfield manages the full lifecycle of distributed training — from node setup and fault recovery to experiment tracking and checkpoint management. Write standard PyTorch. Higgsfield handles the rest." eyeColor={A.purple} />
+          <SH chapter="01 —" eyebrow="The Foundation" title="Train at any scale, without fear." body="Infrastructure failure shouldn't end your story. Higgsfield absorbs GPU failures, recovers checkpoints, and keeps the training run alive — across 3 nodes, 300, or 3,000. Write standard PyTorch. Higgsfield handles the rest." eyeColor={A.purple} />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', gap: 14, marginBottom: 60 }}>
             {[
               { title: 'ZeRO-3 Sharding', body: 'Partition parameters, gradients, and optimizer states across all GPUs. Train models that would never fit on a single device.', color: A.purple },
@@ -735,7 +739,7 @@ export default function Page() {
       {/* ── ZeRO Explorer ── */}
       <section id="zero" style={{ padding: '100px 0', borderTop: `1px solid ${A.border}`, background: A.bg2 }}>
         <div style={{ maxWidth: 980, margin: '0 auto', padding: '0 32px' }}>
-          <SH eyebrow="Memory Architecture" title="ZeRO Stage Explorer" body="Higgsfield exposes DeepSpeed ZeRO through a single parameter. Select a stage to see exactly how it distributes memory across your GPU cluster." eyeColor={A.cyan} />
+          <SH chapter="02 —" eyebrow="Memory Architecture" title="How trillion-parameter models fit." body="ZeRO sharding isn't magic — it's mathematics. Select a stage to watch your model's state distribute across the cluster, and understand exactly why each reduction matters." eyeColor={A.cyan} />
           <ZeroExplorer />
         </div>
       </section>
@@ -743,7 +747,7 @@ export default function Page() {
       {/* ── Code API ── */}
       <section id="api" style={{ padding: '100px 0', borderTop: `1px solid ${A.border}` }}>
         <div style={{ maxWidth: 980, margin: '0 auto', padding: '0 32px' }}>
-          <SH eyebrow="Developer API" title="One decorator. Any model." body="The @experiment API wraps standard PyTorch with no opinion on your architecture, optimizer, or data pipeline. ZeRO stage, precision, and checkpointing are single keyword arguments." eyeColor={A.green} />
+          <SH chapter="03 —" eyebrow="The Interface" title="One decorator. Any model." body="The @experiment API wraps standard PyTorch with no opinion on your architecture, optimizer, or data pipeline. ZeRO stage, precision, and checkpointing — each a single keyword. Everything else stays yours." eyeColor={A.green} />
           <CodeExplorer />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginTop: 24 }}>
             {[{ v: 'ZeRO-3', d: 'One kwarg' }, { v: 'bf16', d: 'Mixed precision' }, { v: 'push_to_hub', d: 'HuggingFace export' }, { v: 'GitHub CI', d: 'Auto-generated workflow' }].map(s => (
@@ -759,24 +763,24 @@ export default function Page() {
       {/* ── Simulator ── */}
       <section id="simulator" style={{ padding: '100px 0', borderTop: `1px solid ${A.border}`, background: A.bg2 }}>
         <div style={{ maxWidth: 980, margin: '0 auto', padding: '0 32px' }}>
-          <SH eyebrow="Interactive" title="Live Training Simulator" body="Watch a 3-node, 12-GPU LLaMA 70B fine-tune run in real time — including a mid-training GPU failure and automatic checkpoint recovery." eyeColor={A.amber} />
+          <SH chapter="04 —" eyebrow="Live Training" title="Watch it break. Watch it heal." body="A 3-node, 12-GPU LLaMA 70B run: initialization, steady progress, a GPU failure at step 4203, automatic recovery, and continuation without intervention. This is fault tolerance as a first act." eyeColor={A.amber} />
           <TrainingSimulator />
         </div>
       </section>
 
       {/* ── Prompt Studio transition ── */}
       <section style={{ padding: '120px 32px', background: A.bg, borderTop: `1px solid ${A.border}`, textAlign: 'center' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, padding: '8px 20px', borderRadius: 980, border: `1px solid ${A.coral}40`, background: A.coralSoft, marginBottom: 32 }}>
-          <span style={{ fontSize: 11, color: A.coral, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase' }}>Higgsfield AI · Video Generation Platform</span>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, padding: '8px 20px', borderRadius: 980, border: `1px solid ${A.coral}40`, background: A.coralSoft, marginBottom: 36 }}>
+          <span style={{ fontSize: 11, color: A.coral, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase' }}>Act II — Higgsfield AI</span>
         </div>
-        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: 700, color: A.text, letterSpacing: '-0.03em', lineHeight: 1.1, maxWidth: 700, margin: '0 auto 20px' }}>
-          Now put those models{' '}
-          <span style={{ background: `linear-gradient(135deg, ${A.coral}, ${A.amber})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>to work</span>
+        <h2 style={{ fontSize: 'clamp(2.2rem, 6vw, 4.5rem)', fontWeight: 400, color: A.text, letterSpacing: '-0.01em', lineHeight: 1.05, maxWidth: 720, margin: '0 auto 24px', fontFamily: 'var(--font-abril), Georgia, serif' }}>
+          You trained the model.<br />
+          <span style={{ background: `linear-gradient(135deg, ${A.coral}, ${A.amber})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Now what will it make?</span>
         </h2>
         <p style={{ fontSize: 17, color: A.text3, maxWidth: 560, margin: '0 auto 36px', lineHeight: 1.65 }}>
           Higgsfield AI is the cinematic video and image generation platform.
           The MCSLA formula, 15+ generation engines, and Claude-powered prompt
-          discipline — in one interactive studio.
+          discipline — in one interactive studio. Every frame a decision.
         </p>
         <Chips items={['Kling 3.0', 'Sora 2', 'Veo 3.1', 'Wan 2.7', 'Seedance 2.0', 'Hailuo 2.3', 'GPT Image', 'Flux Kontext']} color={A.coral} />
       </section>
@@ -790,7 +794,7 @@ export default function Page() {
       {/* ── MCSLA Builder ── */}
       <section id="prompt" style={{ padding: '80px 0 100px', background: A.bg2, borderBottom: `1px solid ${A.border}` }}>
         <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 32px' }}>
-          <SH eyebrow="MCSLA Formula" title="Build the perfect prompt" body="Model · Camera · Subject · Look · Action — five layers, every production prompt. Select a camera preset from the library below to wire it into the builder." eyeColor={A.coral} />
+          <SH chapter="05 —" eyebrow="The Formula" title="Five words that become cinema." body="Model · Camera · Subject · Look · Action. The MCSLA formula is a structured prompt language — not freestyle writing. Each layer adds precision. Each combination is a different film. Select a camera preset below to wire it directly into the builder." eyeColor={A.coral} />
           <PromptStudio />
         </div>
       </section>
@@ -798,7 +802,7 @@ export default function Page() {
       {/* ── Video Model Guide ── */}
       <section id="models" style={{ padding: '100px 0', borderTop: `1px solid ${A.border}` }}>
         <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 32px' }}>
-          <SH eyebrow="15+ Generation Engines" title="The right model changes everything" body="Model selection is the single biggest quality factor after the prompt. Compare Higgsfield AI's generation engines on realism, character fidelity, motion quality, audio support, and cost tier." eyeColor={A.green} />
+          <SH chapter="06 —" eyebrow="The Cast" title="The right model changes everything." body="Model selection is the first creative decision, not the last. Each generation engine tells stories differently — realism, character fidelity, motion quality, audio support. Know your cast before you call action." eyeColor={A.green} />
           <div style={{ background: A.bg2, border: `1px solid ${A.borderStrg}`, borderRadius: 20, overflow: 'hidden' }}>
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
@@ -828,7 +832,7 @@ export default function Page() {
       {/* ── Genre Templates ── */}
       <section id="templates" style={{ padding: '100px 0', borderTop: `1px solid ${A.border}`, background: A.bg2 }}>
         <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 32px' }}>
-          <SH eyebrow="Production Templates" title="10 annotated genre prompts" body="Ready-to-use prompts with model recommendations, camera annotations, and style guidance. Click any card to expand the full prompt and copy it." eyeColor={A.amber} />
+          <SH chapter="07 —" eyebrow="Genre Studies" title="Every genre has a grammar." body="From action chase to horror atmosphere, from romance to dance performance — these are annotated production prompts from real workflows. Each carries model recommendations, camera contract, and style intent. Click any card to read the full prompt." eyeColor={A.amber} />
           <GenreGallery />
         </div>
       </section>
@@ -836,23 +840,25 @@ export default function Page() {
       {/* ── DISCIPLINE Framework ── */}
       <section id="discipline" style={{ padding: '100px 0', borderTop: `1px solid ${A.border}` }}>
         <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 32px' }}>
-          <SH eyebrow="Cross-Cutting Patterns" title="The DISCIPLINE Framework" body="9 named patterns across workflow, output, and architecture — forged in the 2026 Cannes production cycle. 15 people. 14 days. One 90-minute AI feature." eyeColor={A.purple} />
+          <SH chapter="08 —" eyebrow="Production Craft" title="The rules of the discipline." body="Nine named patterns. Three tiers. One year of production fire. DISCIPLINE separates a 1% acceptance rate from burning credits on noise — forged across 15 people, 14 days, and one 90-minute AI feature at Cannes." eyeColor={A.purple} />
           <DisciplineGuide />
         </div>
       </section>
 
       {/* ── CTA ── */}
       <section style={{ padding: '120px 32px', borderTop: `1px solid ${A.border}`, background: A.bg2, textAlign: 'center' }}>
-        <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: A.text4, marginBottom: 20 }}>Built for builders</div>
-        <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, color: A.text, letterSpacing: '-0.03em', lineHeight: 1.1, maxWidth: 640, margin: '0 auto 20px' }}>
+        <div style={{ fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: A.text4, marginBottom: 20 }}>Your chapter starts now</div>
+        <h2 style={{ fontSize: 'clamp(2.2rem, 6vw, 4.5rem)', fontWeight: 400, color: A.text, letterSpacing: '-0.01em', lineHeight: 1.05, maxWidth: 680, margin: '0 auto 24px', fontFamily: 'var(--font-abril), Georgia, serif' }}>
           What will you{' '}
           <span style={{ background: `linear-gradient(135deg, ${A.coral}, ${A.purple})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>train</span>
           {' '}and{' '}
           <span style={{ background: `linear-gradient(135deg, ${A.amber}, ${A.coral})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>create</span>?
         </h2>
         <p style={{ fontSize: 17, color: A.text3, maxWidth: 520, margin: '0 auto 40px', lineHeight: 1.65 }}>
-          Anthropic builds Claude to advance AI that is safe and beneficial.<br />
-          Higgsfield builds the tools that let you do the same.
+          Every significant AI creation starts with infrastructure that holds
+          and prompts that direct. You have both. Anthropic builds Claude to
+          advance AI that is safe and beneficial — Higgsfield builds the tools
+          that let you do the same.
         </p>
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <a href="https://github.com/higgsfield-ai/higgsfield" target="_blank" rel="noopener noreferrer" style={{ padding: '14px 30px', borderRadius: 980, background: A.coral, color: '#fff', fontSize: 15, fontWeight: 600 }}>GPU Framework on GitHub ↗</a>
